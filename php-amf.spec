@@ -13,7 +13,6 @@ URL:		http://pecl.php.net/package/amfext/
 Source0:	http://pecl.php.net/get/amfext-%{version}.tar.bz2
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Allows to encode and decode PHP data in ActionScript Message Format (AMF)
