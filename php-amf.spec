@@ -6,14 +6,14 @@
 Summary:	ActionScript Message Format extension
 Name:		php-%{modname}
 Version:	0.9.1
-Release:	%mkrel 5
+Release:	%mkrel 6
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/amfext/
 Source0:	http://pecl.php.net/get/amfext-%{version}.tar.bz2
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Allows to encode and decode PHP data in ActionScript Message Format (AMF)
