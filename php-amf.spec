@@ -5,12 +5,12 @@
 
 Summary:	ActionScript Message Format extension
 Name:		php-%{modname}
-Version:	0.9.1
-Release:	%mkrel 15
+Version:	0.9.2
+Release:	%mkrel 1
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/amfext/
-Source0:	http://pecl.php.net/get/amfext-%{version}.tar.bz2
+Source0:	http://pecl.php.net/get/amfext-%{version}.tgz
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
