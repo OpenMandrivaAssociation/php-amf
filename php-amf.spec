@@ -6,11 +6,12 @@
 Summary:	ActionScript Message Format extension
 Name:		php-%{modname}
 Version:	0.9.2
-Release:	%mkrel 2
+Release:	%mkrel 1
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/amfext/
 Source0:	http://pecl.php.net/get/amfext-%{version}.tgz
+Patch0:		amfext-0.9.2-peclbug16547.diff
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -30,6 +31,8 @@ find . -type f | xargs chmod 644
 # strip away annoying ^M
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
+
+%patch0 -p0
 
 %build
 %serverbuild
