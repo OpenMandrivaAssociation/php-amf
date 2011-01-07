@@ -6,7 +6,7 @@
 Summary:	ActionScript Message Format extension
 Name:		php-%{modname}
 Version:	0.9.2
-Release:	%mkrel 6
+Release:	%mkrel 7
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/amfext/
