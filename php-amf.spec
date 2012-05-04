@@ -12,6 +12,7 @@ License:	PHP License
 URL:		http://pecl.php.net/package/amfext/
 Source0:	http://pecl.php.net/get/amfext-%{version}.tgz
 Patch0:		amfext-0.9.2-peclbug16547.diff
+Patch1:		amfext-0.9.2-php54x.diff
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -33,6 +34,7 @@ find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 
 %patch0 -p0
+%patch1 -p0
 
 %build
 %serverbuild
