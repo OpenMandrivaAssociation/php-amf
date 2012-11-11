@@ -1,0 +1,66 @@
+--- amf.c	2009-12-27 15:48:17.777644177 +0100
++++ amf.c.oden	2009-12-27 15:47:41.271614816 +0100
+@@ -844,7 +844,8 @@ static inline void amf_write_zstring(amf
+ 
+ 		buf->last_chunk->size = 1;  /*  zval chun */
+ 		buf->last_chunk->zv = zstr;
+-		ZVAL_ADDREF(zstr);
++		Z_ADDREF_P(zstr);
++
+ 		buf->chunks++;
+ 		buf->left_in_part -= sizeof(amf_string_chunk);
+ 
+@@ -1185,7 +1186,7 @@ static void amf3_serialize_object(amf_se
+ 		int resultType = AMFC_TYPEDOBJECT;
+ 		int resultValueLength = 0;
+ 		zval** resultValue = struc;
+-		int deallocResult = (*struc)->refcount;
++		int deallocResult = Z_REFCOUNT_PP(struc);
+ 
+ 		resultType = amf_perform_serialize_callback(struc, &className,&classNameLen,&resultValue,var_hash TSRMLS_CC);
+ 		
+@@ -2670,7 +2671,7 @@ static int amf3_read_string(zval **rval,
+ 		}
+ 		else
+ 		{
+-			newval->refcount--;
++			Z_DELREF_P(newval);
+ 		}
+ 		*rval = newval;
+ 	}
+@@ -2824,7 +2825,7 @@ static int amf_read_objectdata(zval **rv
+ 	{
+ 		if(zClassname != NULL)
+ 		{
+-			ZVAL_ADDREF(zClassname);
++			Z_ADDREF_P(zClassname);
+ 			add_assoc_zval(*rval, "_explicitType",zClassname);
+ 		}
+ 	}
+@@ -3045,7 +3046,7 @@ static int amf3_unserialize_var(zval **r
+ 				MAKE_STD_ZVAL(zClassDef);
+ 				amf_array_init(zClassDef,nClassMemberCount+2 TSRMLS_CC); 
+ 				add_next_index_long(zClassDef,(bTypedObject?1:0)|nClassMemberCount << AMF_CLASS_MEMBERCOUNT_SHIFT |iDynamicObject|iExternalizable);
+-				ZVAL_ADDREF(zClassname);
++				Z_ADDREF_P(zClassname);
+ 				add_next_index_zval(zClassDef, zClassname); 
+ 		
+ 				 /*  loop over classMemberCoun */
+@@ -3056,7 +3057,7 @@ static int amf3_unserialize_var(zval **r
+ 					{
+ 						break;
+ 					}
+-					ZVAL_ADDREF(zMemberName);
++					Z_ADDREF_P(zMemberName);
+ 					add_next_index_zval(zClassDef,zMemberName);  /*  pass referenc */
+ 				}
+ 
+@@ -3201,7 +3202,7 @@ static int amf3_unserialize_var(zval **r
+ 				{
+ 					if(bTypedObject != 0)
+ 					{
+-						ZVAL_ADDREF(zClassname);
++						Z_ADDREF_P(zClassname);
+ 						add_assoc_zval(*rval, "_explicitType",zClassname);
+ 					}
+ 				}

@@ -1,0 +1,11 @@
+--- amf.c	2012-05-04 09:08:44.997937030 +0200
++++ amf.c.oden	2012-05-04 09:09:03.294058496 +0200
+@@ -32,7 +32,7 @@
+ 
+ /*  module Declarations {{{1*/
+ 
+-static function_entry amf_functions[] = {
++static zend_function_entry amf_functions[] = {
+     PHP_FE(amf_encode, NULL)
+     PHP_FE(amf_decode, NULL)
+     PHP_FE(amf_join_test, NULL)
