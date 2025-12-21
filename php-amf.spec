@@ -13,6 +13,11 @@ URL:		https://pecl.php.net/package/amfext/
 Source0:	http://pecl.php.net/get/amfext-%{version}.tgz
 Patch0:		amfext-0.9.2-peclbug16547.diff
 Patch1:		amfext-0.9.2-php54x.diff
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	php-devel >= 3:5.2.1
 BuildRequires:	file
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
